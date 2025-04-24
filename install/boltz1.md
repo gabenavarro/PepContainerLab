@@ -46,6 +46,7 @@ TODO: COMPLETE
 ```bash
 docker run --rm -it \
   --gpus all \
+  --shm-size=64g \
   -v "$(pwd):/app" \
   boltz1:0.4.1 \
   boltz predict /app/test/boltz1.fasta \
@@ -57,4 +58,6 @@ docker run --rm -it \
     --use_msa_server
 ```
 
-Note ` --cache /app/checkpoints` is important to save models locally and not have to redownload them every time you run app. 
+Note 
+* ` --cache /app/checkpoints` is important to save models locally and not have to redownload them every time you run app. 
+* `--shm-size=32g` is important to allow model CPU memory sharing. Increase to reasonable limit your compute box allows. 
